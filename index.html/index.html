@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8">
+  <title>Stranica za prijavu</title>
+</head>
+<body>
+  <h1>Dobrodošli na stranicu za prijavu</h1>
+
+  <form id="login-form" action="next-page.html" method="post">
+    <label for="username">Korisničko ime:</label>
+    <input type="text" id="username" name="username"><br>
+
+    <label for="password">Lozinka:</label>
+    <input type="password" id="password" name="password"><br>
+
+    <input type="submit" value="Prijavi se">
+  </form>
+
+  <script>
+    document.getElementById("login-form").addEventListener("submit", function(event) {
+      event.preventDefault(); // spriječava podnošenje obrasca
+
+      // provjera korisničkog imena i lozinke
+      var username = document.getElementById("username").value;
+      var password = document.getElementById("password").value;
+      if (username === "admin" && password === "ognjen123") {
+        // ako su korisničko ime i lozinka točni, preusmjeri korisnika na sljedeću stranicu
+        window.location.href = this.action;
+      } else {
+        // inače, prikaži poruku o grešci
+        alert("Pogrešno korisničko ime ili lozinka.");
+      }
+    });
+  </script>
+</body>
+</html>
